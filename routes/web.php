@@ -18,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/',[BookController::class,'index']);
+Route::get('/',[BookController::class,'index'])->name('book.index');
+Route::get('{id}/view',[BookController::class,'view'])->name('view.index');

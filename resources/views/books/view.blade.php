@@ -7,7 +7,7 @@
     <title>Bookstore</title>
 </head>
 <body>
-<h1 class="text-center">Bookstore</h1>
+<h1 class="text-center">Book Details</h1>
 <div class="container mt-4">
   <table class="table table-striped table-hover">
     <thead>
@@ -16,26 +16,23 @@
         <th>Title</th>
         <th>Author</th>
         <th>ISBN</th>
-        <th>Action</th>
+        <th>Stock</th>
+        <th>Price</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($books as $book)
       <tr>
         <td>{{ $book->id }}</td>
         <td>{{ $book->title }}</td>
         <td>{{ $book->author }}</td>
         <td>{{ $book->isbn }}</td>
-        <td>
-          <a href="{{url($book->id.'/view')}}">View</a>
-        </td>
+        <td>{{ $book->stock }}</td>
+        <td>{{ $book->price }}</td>
       </tr>
-      @endforeach
+ 
     </tbody>
   </table>
-  <div class="d-flex justify-content-center">
-    {{ $books->links() }}
-  </div>
+  
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
