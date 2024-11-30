@@ -1,13 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Bookstore</title>
-</head>
+@extends('layout', ['title'=>'Home'])
+
+@section('page-content')
+
+
 <body>
 <h1 class="text-center">Bookstore</h1>
+<div class="row mt-4" >
+  <div class="col-lg-10">
+    search
+  </div>
+  <div class="col-lg-2">
+    <p class="text-end">
+      <a href="{{route('books.create')}}" class="btn btn-primary">New Book</a>
+    </p>
+  </div>
+
+</div>
+
 <div class="container mt-4">
   <table class="table table-striped table-hover">
     <thead>
@@ -27,7 +36,10 @@
         <td>{{ $book->author }}</td>
         <td>{{ $book->isbn }}</td>
         <td>
-          <a href="{{url($book->id.'/view')}}">View</a>
+          <a href="{{route('books.view', $book->id)}}">View</a>
+        </td>
+        <td>
+          <a href="{{route('books.edit', $book->id)}}">Edit</a>
         </td>
       </tr>
       @endforeach
@@ -38,6 +50,4 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+@endsection

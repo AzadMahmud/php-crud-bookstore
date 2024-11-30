@@ -18,5 +18,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/',[BookController::class,'index'])->name('book.index');
-Route::get('{id}/view',[BookController::class,'view'])->name('view.index');
+Route::get('/',[BookController::class,'index'])->name('books.index');
+Route::get('{id}/view',[BookController::class,'view'])->name('books.view');
+Route::get('{id}/edit',[BookController::class,'edit'])->name('books.edit');
+Route::get('create',[BookController::class,'create'])->name('books.create');
+Route::post('books',[BookController::class,'store'])->name('books.store');
