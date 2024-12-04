@@ -4,10 +4,19 @@
 
 
 <body>
-<h1 class="text-center">Bookstore</h1>
+<h1 class="text-center"><a href="{{route('books.index')}}" class="text-decoration-none text-reset">BookStore</a> </h1>
 <div class="row mt-4" >
   <div class="col-lg-10">
-    search
+    <form method="get" action="{{route('books.index')}}">
+      <div class="row g-3">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Search" name="search" >
+        </div>
+        <div class="col">
+            <button class="btn btn-success">Search</button>
+        </div>
+      </div>
+    </form>
   </div>
   <div class="col-lg-2">
     <p class="text-end">
@@ -36,10 +45,18 @@
         <td>{{ $book->author }}</td>
         <td>{{ $book->isbn }}</td>
         <td>
-          <a href="{{route('books.view', $book->id)}}">View</a>
+          <a href="{{route('books.view', $book->id)}}" class="btn btn-info">View</a>
         </td>
         <td>
-          <a href="{{route('books.edit', $book->id)}}">Edit</a>
+          <a href="{{route('books.edit', $book->id)}}"class="btn btn-warning">Edit</a>
+        </td>
+        <td>
+          <form method="post" action="{{route('books.destroy')}}", onsubmit="return confirm('Are you sure buddy?')" >
+            @csrf
+            @method('DELETE')
+            <input type="hidden" name="id" value="{{$book->id}}" >
+            <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
         </td>
       </tr>
       @endforeach
